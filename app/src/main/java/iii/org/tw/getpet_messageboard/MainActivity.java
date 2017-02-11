@@ -31,14 +31,15 @@ import org.json.JSONObject;
 
 //***CLASS與LAYOUT配對
 /*
-AddOrEditPetData.java + pet_data_select_page.xml
-page_editPetData.java + page_edit_pet_data.xml
+MainActivity.java + activity_main2.xml(裡面包content_main2.xml
+page_addNewMessage.java + activity_page_add_new_message.xml
 
 */
 //**
 
 
 public class MainActivity extends AppCompatActivity {
+     static   MainActivity iv_MainActivity ;
     //**
     ArrayList<object_Get_messageOfMessageBoard> iv_ArrayList_object_Get_messageOfMessageBoard;
     //**
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         init();
     }
     public void init(){
+        iv_MainActivity=this;
         setViewComponent();
         testPetData();
         //**
@@ -72,7 +74,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent l_intent = new Intent(MainActivity.this,page_addNewMessage.class);
+                l_intent.putExtra("object_petDataForSelfDB",iv_TEST_object_petDataForSelfDB);
                 startActivityForResult(l_intent,CDictionary.requestCodeOfAddNewMessage);
+
 
             }
         });
@@ -81,17 +85,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
         if(requestCode == CDictionary.requestCodeOfAddNewMessage && resultCode == RESULT_OK){
-            refreshPage();
+            MainActivity.iv_MainActivity.finish();
         }
     }
 
-    private void refreshPage() {
-        Intent intent = getIntent();
-        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-        finish();
-        startActivity(intent);
-    }
+
 
     private void testPetData() {
         iv_TEST_object_petDataForSelfDB.setAnimalID(1);
