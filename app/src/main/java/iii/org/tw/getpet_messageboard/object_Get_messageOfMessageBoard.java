@@ -11,10 +11,12 @@ public class object_Get_messageOfMessageBoard implements Serializable {
     int boardID = 0;
     String boardTime="";
     String board_userID;
-    int board_animalID;
-    String boardContent;
     String UserName;
     String Email;
+    int board_animalID;
+    String boardContent;
+
+
 
 
     public int getBoard_animalID() {

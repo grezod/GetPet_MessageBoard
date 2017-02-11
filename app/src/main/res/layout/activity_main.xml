@@ -10,8 +10,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="iii.org.tw.getpet_messageboard.MainActivity">
 
-    <TextView
+    <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:layout_height="match_parent"
+        android:id="@+id/ListView_for_messageBoard"
+        >
+
+    </ListView>
 </RelativeLayout>
