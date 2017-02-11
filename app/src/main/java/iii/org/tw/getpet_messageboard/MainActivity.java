@@ -37,7 +37,6 @@ page_addNewMessage.java + activity_page_add_new_message.xml
 */
 //**
 
-
 public class MainActivity extends AppCompatActivity {
      static   MainActivity iv_MainActivity ;
     //**
