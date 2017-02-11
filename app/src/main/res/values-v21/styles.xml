@@ -1,0 +1,31 @@
+<resources>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+
+        <!-- 去黑邊 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 設置是否可滑動 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 設置是否透明 -->
+        <item name="android:windowIsTranslucent">false</item>
+        <!-- 無標題 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 背景 -->
+        <item name="android:background">@null</item>
+        <!-- 視窗背景 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 是否變暗 -->
+        <item name="android:backgroundDimEnabled">false</item>
+        <!-- 點擊空白部分activity消失 -->
+        <item name="android:windowCloseOnTouchOutside">false</item>
+
+    </style>
+
+</resources>

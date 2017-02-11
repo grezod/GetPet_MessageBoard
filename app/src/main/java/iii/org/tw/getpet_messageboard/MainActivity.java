@@ -1,5 +1,7 @@
 package iii.org.tw.getpet_messageboard;
 
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -36,24 +39,24 @@ page_editPetData.java + page_edit_pet_data.xml
 
 
 public class MainActivity extends AppCompatActivity {
-    ArrayList<object_Get_messageOfMessageBoard> iv_ArrayList_object_Get_messageOfMessageBoard;
-    //objectArrayList_Get_messageOfMessageBoard iv_objectArray_Get_messageOfMessageBoard;
-    //ArrayList<object_Get_messageOfMessageBoard> iv_ArrayList_object_Get_messageOfMessageBoard;
-
     //**
-    //object_Get_messageOfMessageBoard[] iv_objectArray_Get_messageOfMessageBoard;
+    ArrayList<object_Get_messageOfMessageBoard> iv_ArrayList_object_Get_messageOfMessageBoard;
+    //**
+
     object_petDataForSelfDB iv_TEST_object_petDataForSelfDB = new object_petDataForSelfDB();
     List<object_Get_messageOfMessageBoard> iv_object_Get_messageOfMessageBoard = new ArrayList<object_Get_messageOfMessageBoard>();
     private ListView iv_listView_listViewOfMessageBoard;
     private AdapterOfMessageBoard iv_Adapter_AdapterOfMessageBoard;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main2);
         init();
     }
     public void init(){
+        setViewComponent();
         testPetData();
         //**
         query查詢該寵物所有留言();
@@ -61,6 +64,35 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+    private void setViewComponent() {
+        fab_sendNewMessage = (FloatingActionButton)findViewById(R.id.fab_sendNewMessage);
+        fab_sendNewMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent l_intent = new Intent(MainActivity.this,page_addNewMessage.class);
+                startActivityForResult(l_intent,CDictionary.requestCodeOfAddNewMessage);
+
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == CDictionary.requestCodeOfAddNewMessage && resultCode == RESULT_OK){
+            refreshPage();
+        }
+    }
+
+    private void refreshPage() {
+        Intent intent = getIntent();
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        finish();
+        startActivity(intent);
+    }
+
     private void testPetData() {
         iv_TEST_object_petDataForSelfDB.setAnimalID(1);
 
@@ -162,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+FloatingActionButton fab_sendNewMessage;
 
 
 }
